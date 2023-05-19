@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Carrera
 # Create your views here.
@@ -22,3 +22,17 @@ def carreras(request):
             'carreras':carreras
             }
     return render(request,'core/carreras.html', data)
+
+def nueva_carrera(request):
+
+    if request.POST :
+        nombre = request.POST["nombre"]
+        duracion = request.POST["duracion"]
+        codigo = request.POST["codigo"]
+
+        #logica y validaciones
+        c = Carrera(codigo=codigo,nombre=nombre,duracion=duracion)
+        c.save()
+        return redirect(carreras)
+
+    return render(request,'core/nueva_carrera.html')
