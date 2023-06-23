@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.css'  %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos.css'  %}">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <header>
+                    <!-- Navbar -->
+                    <nav class="navbar navbar-expand-lg bg-light">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#"></a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page"
+                                            href="{% url 'home' %}">Inicio</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'carreras' %}">Carreras</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'docentes' %}">Docentes</a>
+                                    </li>
+
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navbar -->
+
+                    <!-- Background image -->
+                    <div id="header" class="p-5 text-center bg-image">
+                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                            <div class="d-flex justify-content-center align-items-center h-100">
+                                <div class="text-white">
+                                    <h1 class="mb-3">{ Informática JMC }</h1>
+                                    <h6 class="mb-3">Carreras</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col ">
+            
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-1">
+                    <a class="btn btn-success" role="button" href="{% url 'nueva_carrera' %}">Nueva Carrera</a>
+                  </div>
+
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Duración</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for carrera in carreras %}
+                        <tr>
+                            <td>{{carrera.codigo}}</td>
+                            <td>{{carrera.nombre}}</td>
+                            <td>{{carrera.duracion}} semestres</td>
+                        </tr>
+                        {% endfor%}
+                    </tbody>
+
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row fixed-bottom">
+        <div class="col">
+            <footer class="bg-light text-center text-lg-start">
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    © 2023 Copyright:
+                    <a class="text-dark" href="https://github.com/pgaticac">pgaticac</a>
+                    <br>
+                    <a class="nav-link" href="{% url 'admin:index' %}">Acceso Administrador</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+        </div>
+    </div>
+
+
+
+    </div>
+    <script src="{% static 'core/js/bootstrap.js' %}"></script>
+</body>
+
+</html>

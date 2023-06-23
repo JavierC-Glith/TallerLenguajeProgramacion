@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial;
+}
+
+#header {
+    background-color: #669bbc;
+    height: 250px;
+}
